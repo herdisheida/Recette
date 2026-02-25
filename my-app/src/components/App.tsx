@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
@@ -20,6 +19,7 @@ function App() {
         </a>
       </header> */}
       <header>
+
         {/* TODO navbar: search bar */}
         {/* TODO main page */}
         {/* TODO category select */}

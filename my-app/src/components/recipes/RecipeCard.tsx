@@ -14,7 +14,11 @@ function tagIcon(tag: RecipeTag) {
 export function RecipeCard({ recipe }: { recipe: RecipeListItem }) {
   return (
     <Link to={`/recipes/${recipe.id}`} className={styles.card}>
-      <img className={styles.image} src={recipe.image} alt={recipe.title} />
+      <img
+        className={styles.image}
+        src={`data:image/png;base64,${recipe.image}`}
+        alt={recipe.title}
+      />
 
       <div className={styles.body}>
         <h3 className={styles.title}>{recipe.title}</h3>
@@ -22,7 +26,7 @@ export function RecipeCard({ recipe }: { recipe: RecipeListItem }) {
         <div className={styles.tags}>
           {recipe.tags.map((t) => (
             <span key={`${recipe.id}-${t}`} className={styles.tag}>
-              {tagIcon(t)} {t}
+              {tagIcon(t)}
             </span>
           ))}
         </div>

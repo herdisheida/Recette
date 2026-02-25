@@ -42,7 +42,7 @@ function normalizeRecipeDetails(r: any): UiRecipeDetails {
     title: r.title,
     author: r.author ?? "",
     description: r.description ?? "",
-    image: r.image,
+    image: `data:image/png;base64,${r.image}`,
     recipeTypeId: r.recipeType,
 
     calories: Number(getTagValue(r.tags, "Calories") ?? 0),

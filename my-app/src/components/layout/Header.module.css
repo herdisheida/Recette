@@ -1,23 +1,23 @@
 .header {
-    /* height 350px + linear gradient [lightblue -> darkblue] */
-    height: 350px;
-    padding: 32px 16px;
-    background: linear-gradient(180deg, lightblue, darkblue);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 18px;
+  /* height 350px + linear gradient [lightblue -> darkblue] */
+  height: 350px;
+  padding: 32px 16px;
+  background: linear-gradient(180deg, lightblue, darkblue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
 }
 
 .title {
-    color: white;
-    font-size: 42px;
-    margin: 0;
+  color: white;
+  font-size: 42px;
+  margin: 0;
 }
 
 .controls {
-    max-width: 900px;
-    width: 100%;
-    display: grid;
-    gap: 12px;
+  max-width: 900px;
+  width: 100%;
+  display: grid;
+  gap: 12px;
 }

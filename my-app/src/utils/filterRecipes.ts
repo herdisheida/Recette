@@ -1,4 +1,4 @@
-import { RecipeCategory, RecipeListItem } from "../types/recipe";
+import { RecipeListItem } from "../types/recipe";
 
 export function filterRecipes(
   recipes: RecipeListItem[],

@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+
 
 function App() {
   return (
@@ -18,14 +18,12 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <header>
 
         {/* TODO navbar: search bar */}
         {/* TODO main page */}
         {/* TODO category select */}
         {/* TODO list of recipeies */}
         {/* TODO recipe info in detail */}
-      </header>
     </div>
   );
 }

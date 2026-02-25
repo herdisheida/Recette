@@ -36,6 +36,7 @@ export function HomePage() {
         setTypes(["All", ...typesRes.map((t: any) => t.title ?? t)]);
       } catch (e: any) {
         setError("Something happened while loading recipes.");
+        console.error(e);
       } finally {
         setLoading(false);
       }

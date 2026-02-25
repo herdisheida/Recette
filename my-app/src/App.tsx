@@ -1,11 +1,11 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -18,6 +18,13 @@ function App() {
         >
           Learn React
         </a>
+      </header> */}
+      <header>
+        {/* TODO navbar: search bar */}
+        {/* TODO main page */}
+        {/* TODO category select */}
+        {/* TODO list of recipeies */}
+        {/* TODO recipe info in detail */}
       </header>
     </div>
   );

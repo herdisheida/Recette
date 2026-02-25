@@ -3,7 +3,7 @@ import { RecipeCategory, RecipeListItem } from "../types/recipe";
 export function filterRecipes(
   recipes: RecipeListItem[],
   searchText: string,
-  category: RecipeCategory,
+  category: string, // category
 ) {
   const s = searchText.trim().toLowerCase();
 

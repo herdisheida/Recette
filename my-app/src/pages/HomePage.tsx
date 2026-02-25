@@ -7,13 +7,40 @@ import { Loading } from "../components/ui/Loading";
 import { ErrorMessage } from "../components/ui/ErrorMessage";
 import { getRecipes, getRecipeTypes } from "../api/recipesApi";
 import { filterRecipes } from "../utils/filterRecipes";
-import { RecipeListItem } from "../types/recipe";
+import type { RecipeListItem, RecipeType } from "../types/recipe";
+
+// Convert API recipe -> UI recipe list item
+function normalizeRecipeListItem(r: any): RecipeListItem {
+  const booleanTagKeys = new Set([
+    "Meat",
+    "Fish",
+    "Spicy",
+    "Chicken",
+    "KidFriendly",
+  ]);
+
+  const iconTags = (r.tags ?? [])
+    .filter((t: any) => booleanTagKeys.has(t.key) && t.value === true)
+    .map((t: any) => (t.key === "KidFriendly" ? "Kid friendly" : t.key));
+
+  return {
+    id: r._id,
+    title: r.title,
+    image: r.image,
+    recipeTypeId: r.recipeType, // API gives an ID string
+    tags: iconTags,
+  };
+}
+
+function normalizeRecipeType(t: any): RecipeType {
+  return { id: t._id, name: t.name };
+}
 
 export function HomePage() {
   const [recipes, setRecipes] = useState<RecipeListItem[]>([]);
-  const [types, setTypes] = useState<string[]>(["All"]);
+  const [recipeTypes, setRecipeTypes] = useState<RecipeType[]>([]);
   const [search, setSearch] = useState("");
-  const [selectedType, setSelectedType] = useState("All");
+  const [selectedTypeId, setSelectedTypeId] = useState<string>("All");
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -29,34 +56,30 @@ export function HomePage() {
           getRecipeTypes(),
         ]);
 
-        // map API -> my types
-        setRecipes(recipesRes); // TODO later maybe fix
-
-        // types endpoint + static "All"
-        setTypes(["All", ...typesRes.map((t: any) => t.title ?? t)]);
-      } catch (e: any) {
+        setRecipes(recipesRes.map(normalizeRecipeListItem));
+        setRecipeTypes(typesRes.map(normalizeRecipeType));
+      } catch (e) {
         setError("Something happened while loading recipes.");
-        console.error(e);
       } finally {
         setLoading(false);
       }
     }
+
     run();
   }, []);
 
-  const filtered = useMemo(
-    () => filterRecipes(recipes, search, selectedType),
-    [recipes, search, selectedType],
-  );
+  const filtered = useMemo(() => {
+    return filterRecipes(recipes, search, selectedTypeId);
+  }, [recipes, search, selectedTypeId]);
 
   return (
     <div>
       <Header>
         <SearchBar value={search} onChange={setSearch} />
         <CategoryFilter
-          types={types}
-          selected={selectedType}
-          onSelect={setSelectedType}
+          types={recipeTypes}
+          selectedId={selectedTypeId}
+          onSelect={setSelectedTypeId}
         />
       </Header>
 

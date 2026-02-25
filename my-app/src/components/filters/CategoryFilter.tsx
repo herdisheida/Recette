@@ -1,12 +1,13 @@
 import styles from "./CategoryFilter.module.css";
+import type { RecipeType } from "../../types/recipe";
 
 export function CategoryFilter({
   types,
   selectedId,
   onSelect,
 }: {
-  types: { id: string; name: string }[];
-  selectedId: string; // "All" or id
+  types: RecipeType[];
+  selectedId: string; // "All" or recipeType id
   onSelect: (id: string) => void;
 }) {
   return (

@@ -1,5 +1,7 @@
+import type { RecipeListItem } from "../types/recipe";
+
 export function filterRecipes(
-  recipes: any[],
+  recipes: RecipeListItem[],
   searchText: string,
   selectedTypeId: string,
 ) {

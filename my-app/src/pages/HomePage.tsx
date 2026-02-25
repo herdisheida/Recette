@@ -76,12 +76,13 @@ export function HomePage() {
     <div>
       <Header>
         <SearchBar value={search} onChange={setSearch} />
-        <CategoryFilter
-          types={recipeTypes}
-          selectedId={selectedTypeId}
-          onSelect={setSelectedTypeId}
-        />
       </Header>
+
+      <CategoryFilter
+        types={recipeTypes}
+        selectedId={selectedTypeId}
+        onSelect={setSelectedTypeId}
+      />
 
       <main style={{ maxWidth: 1100, margin: "0 auto", padding: 16 }}>
         {loading && <Loading />}

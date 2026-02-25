@@ -1,5 +1,11 @@
 export type RecipeTag = "Meat" | "Fish" | "Spicy" | "Chicken" | "Kid friendly";
-export type RecipeCategory = "All" | "Appetizers" | "Starters" | "Main Courses" | "Side Dishes" | "Desserts";
+export type RecipeCategory =
+  | "All"
+  | "Appetizers"
+  | "Starters"
+  | "Main Courses"
+  | "Side Dishes"
+  | "Desserts";
 
 export interface RecipeListItem {
   id: string;

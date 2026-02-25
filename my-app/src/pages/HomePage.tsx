@@ -87,6 +87,15 @@ export function HomePage() {
 
         {loading && <Loading />}
         {error && <ErrorMessage message={error} />}
+
+        {/* show how many */}
+        {!loading && !error && (
+          <p style={{ marginTop: 12, marginBottom: 0 }}>
+            You have{" "}
+            <span style={{ fontWeight: "bold" }}>{filtered.length}</span>{" "}
+            recipes to explore.
+          </p>
+        )}
         {!loading && !error && <RecipeList recipes={filtered} />}
       </main>
     </div>

@@ -5,6 +5,35 @@ import { Loading } from "../components/ui/Loading";
 import { ErrorMessage } from "../components/ui/ErrorMessage";
 import { RecipeDetails } from "../types/recipe";
 
+function getTagValue(tags: any[], key: string) {
+  const found = (tags ?? []).find((t) => t.key === key);
+  return found?.value;
+}
+
+function normalizeRecipeDetails(r: any) {
+  const ingredients = (r.ingredients ?? []).map((x: any) =>
+    typeof x === "string" ? x : x.ingredient,
+  );
+
+  const instructions = (r.instructions ?? []).map((x: any) =>
+    typeof x === "string" ? x : (x.instruction ?? x.step ?? x.text),
+  );
+
+  return {
+    id: r._id,
+    title: r.title,
+    image: r.image,
+    recipeTypeId: r.recipeType,
+    author: r.author ?? "",
+    description: r.description ?? "",
+    ingredients,
+    instructions,
+    calories: Number(getTagValue(r.tags, "Calories") ?? 0),
+    totalMinutes: Number(getTagValue(r.tags, "TotalMinutes") ?? 0),
+    tags: [], // not needed on details
+  };
+}
+
 export function RecipeDetailsPage() {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState<RecipeDetails | null>(null);
@@ -18,7 +47,7 @@ export function RecipeDetailsPage() {
         setLoading(true);
         setError(null);
         const res = await getRecipeById(recipeId);
-        setRecipe(res);
+        setRecipe(normalizeRecipeDetails(res));
       } catch {
         setError("Something happened while loading recipe details.");
       } finally {

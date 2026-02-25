@@ -2090,3 +2090,4 @@ node_modules/.bin/nodetouch
 node_modules/.bin/nodemon
 node_modules/.bin/mime
 node_modules/.bin/acorn
+.DS_Store

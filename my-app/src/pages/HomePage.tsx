@@ -78,13 +78,13 @@ export function HomePage() {
         <SearchBar value={search} onChange={setSearch} />
       </Header>
 
-      <CategoryFilter
-        types={recipeTypes}
-        selectedId={selectedTypeId}
-        onSelect={setSelectedTypeId}
-      />
-
       <main style={{ maxWidth: 1100, margin: "0 auto", padding: 16 }}>
+        <CategoryFilter
+          types={recipeTypes}
+          selectedId={selectedTypeId}
+          onSelect={setSelectedTypeId}
+        />
+
         {loading && <Loading />}
         {error && <ErrorMessage message={error} />}
         {!loading && !error && <RecipeList recipes={filtered} />}

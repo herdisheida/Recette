@@ -1,18 +1,18 @@
 .header {
   /* height 350px + linear gradient [lightblue -> darkblue] */
   height: 350px;
-  padding: 32px 16px;
-  background: linear-gradient(180deg, lightblue, darkblue);
+  background: linear-gradient(180deg, #219ebc, #2172bc);
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: center;
+  align-items: center;
   gap: 18px;
 }
 
 .title {
   color: white;
   font-size: 42px;
-  margin: 0;
+  margin: 1rem 0;
 }
 
 .controls {

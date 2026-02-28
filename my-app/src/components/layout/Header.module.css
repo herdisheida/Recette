@@ -1,7 +1,7 @@
 .header {
   /* height 350px + linear gradient [lightblue -> darkblue] */
   height: 350px;
-  background: linear-gradient(180deg, #219ebc, #2172bc);
+  background: linear-gradient(var(--color-light-blue), var(--color-dark-blue));
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;

@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  justify-content: center;
+  background: white;
+  border-radius: 2rem;
+
+  /* space for icon */
+  padding-left: 1.5rem;
+  padding-right: 2.5rem;
+}
+
+.searchIcon {
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  border: none;
+  font-size: 1rem;
+  padding: 1.5rem 1rem;
+  width: 100%;
+}
+
+input:focus {
+  outline: none; /* remove the default border */
+  box-shadow: none; /* remove any shadow effects */
+}

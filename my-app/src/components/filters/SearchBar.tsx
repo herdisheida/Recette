@@ -1,4 +1,5 @@
 import styles from "./SearchBar.module.css";
+// import magnifyingGlassIcon from "../../images/magnifying-glass-solid.png";
 
 export function SearchBar({
   value,
@@ -8,11 +9,14 @@ export function SearchBar({
   onChange: (v: string) => void;
 }) {
   return (
-    <input
-      className={styles.input}
-      placeholder="Search recipes…"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-    />
+    <div className={styles.container}>
+      <div className={styles.searchIcon}>🔎</div>
+      <input
+        className={styles.input}
+        placeholder="Search for recipes"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
+    </div>
   );
 }

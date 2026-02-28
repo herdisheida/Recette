@@ -7,15 +7,13 @@ import { Loading } from "../components/ui/Loading";
 import { ErrorMessage } from "../components/ui/ErrorMessage";
 import { getRecipes, getRecipeTypes } from "../api/recipesApi";
 import { filterRecipes } from "../utils/filterRecipes";
-
+import style from "./HomePage.module.css";
 import type { ApiRecipeListItem, ApiTag, ApiRecipeType } from "../types/api";
 import {
   RecipeTag,
   type RecipeListItem,
   type RecipeType,
 } from "../types/recipe";
-
-import style from "./HomePage.module.css";
 
 /*
 code starts

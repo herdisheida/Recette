@@ -17,7 +17,7 @@ export function CategoryFilter({
         onClick={() => onSelect("All")}
         type="button"
       >
-        All
+        ALL
       </button>
 
       {types.map((t) => {
@@ -29,7 +29,7 @@ export function CategoryFilter({
             onClick={() => onSelect(t.id)}
             type="button"
           >
-            {t.name}
+            {t.name.toUpperCase()}
           </button>
         );
       })}

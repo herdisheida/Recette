@@ -3,12 +3,14 @@ import { useParams, Link } from "react-router-dom";
 import { getRecipeById } from "../api/recipesApi";
 import { Loading } from "../components/ui/Loading";
 import { ErrorMessage } from "../components/ui/ErrorMessage";
+import type {
+  ApiRecipeDetails,
+  ApiTag,
+  ApiIngredient,
+  ApiInstruction,
+} from "../types/api";
 
 import styles from "./RecipeDetailsPage.module.css";
-
-type ApiTag = { key: string; value: any };
-type ApiIngredient = { ingredient: string };
-type ApiInstruction = { step: number; description: string };
 
 type UiRecipeDetails = {
   id: string;
@@ -29,7 +31,7 @@ function getTagValue(tags: ApiTag[] | undefined, key: string) {
   return (tags ?? []).find((t) => t.key === key)?.value;
 }
 
-function normalizeRecipeDetails(r: any): UiRecipeDetails {
+function normalizeRecipeDetails(r: ApiRecipeDetails): UiRecipeDetails {
   const ingredients = (r.ingredients ?? []).map(
     (x: ApiIngredient) => x.ingredient,
   );
@@ -70,6 +72,8 @@ export function RecipeDetailsPage() {
         setError(null);
 
         const res = await getRecipeById(recipeId);
+
+        console.log("API response for recipe details:", res); // Debug log
         setRecipe(normalizeRecipeDetails(res));
       } catch (e) {
         setError(

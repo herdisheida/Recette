@@ -7,34 +7,53 @@ import { Loading } from "../components/ui/Loading";
 import { ErrorMessage } from "../components/ui/ErrorMessage";
 import { getRecipes, getRecipeTypes } from "../api/recipesApi";
 import { filterRecipes } from "../utils/filterRecipes";
-import type { RecipeListItem, RecipeType } from "../types/recipe";
+
+import type { ApiRecipeListItem, ApiTag, ApiRecipeType } from "../types/api";
+import {
+  RecipeTag,
+  type RecipeListItem,
+  type RecipeType,
+} from "../types/recipe";
 
 import style from "./HomePage.module.css";
 
-// Convert API recipe -> UI recipe list item
-function normalizeRecipeListItem(r: any): RecipeListItem {
-  const booleanTagKeys = new Set([
-    "Meat",
-    "Fish",
-    "Spicy",
-    "Chicken",
-    "KidFriendly",
-  ]);
+/*
+code starts
+*/
+const TAG_MAP = {
+  Meat: RecipeTag.Meat,
+  Fish: RecipeTag.Fish,
+  Spicy: RecipeTag.Spicy,
+  Chicken: RecipeTag.Chicken,
+  KidFriendly: RecipeTag.KidFriendly,
+} as const;
 
-  const iconTags = (r.tags ?? [])
-    .filter((t: any) => booleanTagKeys.has(t.key) && t.value === true)
-    .map((t: any) => (t.key === "KidFriendly" ? "Kid friendly" : t.key));
+type TagMapKey = keyof typeof TAG_MAP;
+
+function isTagMapKey(key: string): key is TagMapKey {
+  return Object.prototype.hasOwnProperty.call(TAG_MAP, key);
+}
+
+function isIconTag(t: ApiTag): t is ApiTag & { key: TagMapKey } {
+  return t.value === true && isTagMapKey(t.key);
+}
+
+function normalizeRecipeListItem(r: ApiRecipeListItem): RecipeListItem {
+  // only include tags that are true and in our TAG_MAP
+  const iconTags: RecipeTag[] = r.tags
+    .filter(isIconTag)
+    .map((t) => TAG_MAP[t.key]);
 
   return {
     id: r._id,
     title: r.title,
     image: r.image,
-    recipeTypeId: r.recipeType, // API gives an ID string
+    recipeTypeId: r.recipeType,
     tags: iconTags,
   };
 }
 
-function normalizeRecipeType(t: any): RecipeType {
+function normalizeRecipeType(t: ApiRecipeType): RecipeType {
   return { id: t._id, name: t.name };
 }
 

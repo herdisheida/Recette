@@ -1,4 +1,10 @@
-export type RecipeTag = "Meat" | "Fish" | "Spicy" | "Chicken" | "Kid friendly";
+export enum RecipeTag {
+  Meat = "Meat",
+  Fish = "Fish",
+  Spicy = "Spicy",
+  Chicken = "Chicken",
+  KidFriendly = "Kid friendly",
+}
 
 export interface RecipeListItem {
   id: string;

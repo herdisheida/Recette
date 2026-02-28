@@ -4,6 +4,8 @@ import { getRecipeById } from "../api/recipesApi";
 import { Loading } from "../components/ui/Loading";
 import { ErrorMessage } from "../components/ui/ErrorMessage";
 
+import styles from "./RecipeDetailsPage.module.css";
+
 type ApiTag = { key: string; value: any };
 type ApiIngredient = { ingredient: string };
 type ApiInstruction = { step: number; description: string };
@@ -70,7 +72,10 @@ export function RecipeDetailsPage() {
         const res = await getRecipeById(recipeId);
         setRecipe(normalizeRecipeDetails(res));
       } catch (e) {
-        setError("Something happened while loading recipe details.");
+        setError(
+          "Error: Something happened while loading recipe details." +
+            (e instanceof Error ? " " + e.message : ""),
+        );
       } finally {
         setLoading(false);
       }
@@ -84,23 +89,18 @@ export function RecipeDetailsPage() {
   if (!recipe) return <ErrorMessage message="Recipe not found." />;
 
   return (
-    <div>
-      {/* cover image (520px height) */}
-      <div style={{ height: 520, overflow: "hidden" }}>
-        <img
-          src={recipe.image}
-          alt={recipe.title}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
+    <div className={styles.container}>
+      <div className={styles.imageContainer}>
+        <img className={styles.image} src={recipe.image} alt={recipe.title} />
       </div>
 
-      <main style={{ maxWidth: 900, margin: "0 auto", padding: 16 }}>
-        <Link to="/" style={{ display: "inline-block", marginBottom: 12 }}>
+      <main className={styles.main}>
+        {/* <Link to="/" style={{ display: "inline-block", marginBottom: 12 }}>
           ← Back
-        </Link>
+        </Link> */}
 
-        <h1 style={{ marginBottom: 6 }}>{recipe.title}</h1>
-        <p style={{ marginTop: 0, opacity: 0.8 }}>By {recipe.author}</p>
+        <h1 className={styles.title}>{recipe.title}</h1>
+        <p className={styles.author}>By {recipe.author}</p>
 
         {/* Calories + TotalMinutes tags */}
         <div style={{ display: "flex", gap: 16, margin: "12px 0" }}>

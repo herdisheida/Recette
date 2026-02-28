@@ -1,5 +1,10 @@
-/* getting recipes from base_url */
+import type {
+  ApiRecipeListItem,
+  ApiRecipeType,
+  ApiRecipeDetails,
+} from "../types/api";
 
+// getting recipes from base_url
 const BASE_URL = "http://localhost:3500"; // change if needed
 
 async function safeFetch<T>(url: string): Promise<T> {
@@ -8,15 +13,14 @@ async function safeFetch<T>(url: string): Promise<T> {
   return res.json();
 }
 
-// TODO remove any type replac with correct types when they are defined in types/recipe.ts
 export function getRecipes() {
-  return safeFetch<any[]>(`${BASE_URL}/recipes`);
+  return safeFetch<ApiRecipeListItem[]>(`${BASE_URL}/recipes`);
 }
 
 export function getRecipeTypes() {
-  return safeFetch<any[]>(`${BASE_URL}/recipes/recipeTypes`);
+  return safeFetch<ApiRecipeType[]>(`${BASE_URL}/recipes/recipeTypes`);
 }
 
 export function getRecipeById(recipeId: string) {
-  return safeFetch<any>(`${BASE_URL}/recipes/${recipeId}`);
+  return safeFetch<ApiRecipeDetails>(`${BASE_URL}/recipes/${recipeId}`);
 }

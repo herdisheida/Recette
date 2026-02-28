@@ -102,10 +102,14 @@ export function RecipeDetailsPage() {
         <h1 className={styles.title}>{recipe.title}</h1>
         <p className={styles.author}>By {recipe.author}</p>
 
-        {/* Calories + TotalMinutes tags */}
-        <div style={{ display: "flex", gap: 16, margin: "12px 0" }}>
-          <span> {recipe.calories} Calories</span>
-          <span> {recipe.totalMinutes} Minutes</span>
+        {/* Calories + TotalMinutes boxes */}
+        <div className={styles.infoBoxes}>
+          <div className={styles.infoBox}>
+            Calories <span>{recipe.calories}</span>
+          </div>
+          <div className={styles.infoBox}>
+            Total time <span>{recipe.totalMinutes} min</span>
+          </div>
         </div>
 
         <p>{recipe.description}</p>

@@ -1,3 +1,7 @@
+.main {
+  background: var(--color-light-gray);
+}
+
 .resultCount {
   margin-top: 12px;
   margin-bottom: 32px;

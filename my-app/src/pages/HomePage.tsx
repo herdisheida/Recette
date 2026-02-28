@@ -80,7 +80,7 @@ export function HomePage() {
         <SearchBar value={search} onChange={setSearch} />
       </Header>
 
-      <main>
+      <main className={style.main}>
         <CategoryFilter
           types={recipeTypes}
           selectedId={selectedTypeId}

@@ -89,7 +89,7 @@ export function RecipeDetailsPage() {
   if (!recipe) return <ErrorMessage message="Recipe not found." />;
 
   return (
-    <div className={styles.container}>
+    <>
       <div className={styles.imageContainer}>
         <img className={styles.image} src={recipe.image} alt={recipe.title} />
       </div>
@@ -102,16 +102,17 @@ export function RecipeDetailsPage() {
         <h1 className={styles.title}>{recipe.title}</h1>
         <p className={styles.author}>By {recipe.author}</p>
 
-        {/* Calories + TotalMinutes boxes */}
-        <div className={styles.infoBoxes}>
-          <div className={styles.infoBox}>
+        {/* Calories + TotalMinutes tags */}
+        <div className={styles.infoTags}>
+          <div className={styles.infoTag}>
             Calories <span>{recipe.calories}</span>
           </div>
-          <div className={styles.infoBox}>
+          <div className={styles.infoTag}>
             Total time <span>{recipe.totalMinutes} min</span>
           </div>
         </div>
 
+        <h2>About Recipe</h2>
         <p>{recipe.description}</p>
 
         <h2>Ingredients</h2>
@@ -130,6 +131,6 @@ export function RecipeDetailsPage() {
             ))}
         </ol>
       </main>
-    </div>
+    </>
   );
 }

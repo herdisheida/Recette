@@ -78,7 +78,7 @@ export function HomePage() {
         <SearchBar value={search} onChange={setSearch} />
       </Header>
 
-      <main style={{ maxWidth: 1100, margin: "0 auto", padding: 16 }}>
+      <main>
         <CategoryFilter
           types={recipeTypes}
           selectedId={selectedTypeId}

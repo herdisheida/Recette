@@ -13,10 +13,17 @@ body,
 html,
 body {
   margin: 0;
+  background: var(--color-light-gray);
 }
 
 body {
   font-family: "Lato", sans-serif;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 5rem;
 }
 
 p,

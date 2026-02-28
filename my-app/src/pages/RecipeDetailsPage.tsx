@@ -3,14 +3,13 @@ import { useParams, Link } from "react-router-dom";
 import { getRecipeById } from "../api/recipesApi";
 import { Loading } from "../components/ui/Loading";
 import { ErrorMessage } from "../components/ui/ErrorMessage";
+import styles from "./RecipeDetailsPage.module.css";
 import type {
   ApiRecipeDetails,
   ApiTag,
   ApiIngredient,
   ApiInstruction,
 } from "../types/api";
-
-import styles from "./RecipeDetailsPage.module.css";
 
 type UiRecipeDetails = {
   id: string;

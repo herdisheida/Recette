@@ -6,8 +6,9 @@ function tagIcon(tag: RecipeTag) {
   if (tag === "Meat") return "🥩";
   if (tag === "Fish") return "🐟";
   if (tag === "Spicy") return "🌶️";
-  if (tag === "Chicken") return "🍗";
-  if (tag === "Kid friendly") return "🧒";
+  if (tag === "Chicken") return "🐔";
+  if (tag === "Kid friendly") return "👼";
+  // if tag unknown, return a default icon
   return "🏷️";
 }
 

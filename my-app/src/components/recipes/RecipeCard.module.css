@@ -1,5 +1,5 @@
 .card {
-  background: white;
+  background: var(--color-white);
   border-radius: 6px;
   overflow: hidden;
   text-decoration: none;
@@ -8,6 +8,9 @@
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease;
+
+  padding: 0.7rem;
+  padding-bottom: 0;
 }
 
 .card:hover {
@@ -30,7 +33,7 @@
   margin: 0 0 12px 0;
   font-size: 18px;
   font-weight: 500;
-  color: #929292;
+  color: var(--color-dark-gray);
 }
 
 .tags {

@@ -9,6 +9,8 @@ import { getRecipes, getRecipeTypes } from "../api/recipesApi";
 import { filterRecipes } from "../utils/filterRecipes";
 import type { RecipeListItem, RecipeType } from "../types/recipe";
 
+import style from "./HomePage.module.css";
+
 // Convert API recipe -> UI recipe list item
 function normalizeRecipeListItem(r: any): RecipeListItem {
   const booleanTagKeys = new Set([
@@ -90,9 +92,8 @@ export function HomePage() {
 
         {/* show how many */}
         {!loading && !error && (
-          <p style={{ marginTop: 12, marginBottom: 0 }}>
-            You have{" "}
-            <span style={{ fontWeight: "bold" }}>{filtered.length}</span>{" "}
+          <p className={style.resultCount}>
+            You have <span className={style.count}>{filtered.length}</span>{" "}
             recipes to explore.
           </p>
         )}

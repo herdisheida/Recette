@@ -1,15 +1,10 @@
 import { RecipeListItem } from "../../types/recipe";
 import { RecipeCard } from "./RecipeCard";
+import styles from "./RecipeList.module.css";
 
 export function RecipeList({ recipes }: { recipes: RecipeListItem[] }) {
   return (
-    <div
-      style={{
-        display: "grid",
-        gap: 16,
-        gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
-      }}
-    >
+    <div className={styles.list}>
       {recipes.map((r) => (
         <RecipeCard key={r.id} recipe={r} />
       ))}

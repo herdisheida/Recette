@@ -1,0 +1,10 @@
+.resultCount {
+  margin-top: 12px;
+  margin-bottom: 32px;
+  color: var(--color-dark-gray);
+}
+
+.count {
+  font-weight: bold;
+  color: var(--color-black);
+}

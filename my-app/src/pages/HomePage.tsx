@@ -75,12 +75,12 @@ export function HomePage() {
   }, [recipes, search, selectedTypeId]);
 
   return (
-    <div>
+    <div className={style.container}>
       <Header>
         <SearchBar value={search} onChange={setSearch} />
       </Header>
 
-      <main className={style.main}>
+      <main>
         <CategoryFilter
           types={recipeTypes}
           selectedId={selectedTypeId}

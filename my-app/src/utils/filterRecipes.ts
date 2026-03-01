@@ -4,7 +4,7 @@ export function filterRecipes(
   recipes: RecipeListItem[],
   searchText: string,
   selectedTypeId: string,
-) {
+): RecipeListItem[] {
   const s = searchText.trim().toLowerCase();
 
   return recipes.filter((r) => {

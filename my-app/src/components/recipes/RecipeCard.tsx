@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import type { RecipeListItem, RecipeTag } from "../../types/recipe";
 import styles from "./RecipeCard.module.css";
 
-function tagIcon(tag: RecipeTag) {
+function tagIcon(tag: RecipeTag): string {
   if (tag === "Meat") return "🥩";
   if (tag === "Fish") return "🐟";
   if (tag === "Spicy") return "🌶️";

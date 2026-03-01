@@ -45,6 +45,11 @@
     margin-bottom: 1rem;
   }
 
+  p {
+    color: var(--color-dark-gray);
+    line-height: 1.6;
+  }
+
   ul,
   ol {
     color: var(--color-dark-gray);

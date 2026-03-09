@@ -1,6 +1,7 @@
 # Recette
 
-Small assignment III - Recette
+**Recette** is a small school project built with React and Typescript.
+It is a recipe app that allows users to search for recipes and view their details.
 
 ### How to run
 
